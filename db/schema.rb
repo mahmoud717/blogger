@@ -20,7 +20,13 @@ ActiveRecord::Schema.define(version: 2020_10_20_142833) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'boolian' for column 'is_admin'
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "password_digest"
+    t.string "is_admin"
+  end
 
 end
