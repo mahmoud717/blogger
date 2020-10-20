@@ -1,0 +1,33 @@
+<%= render  "shared/notice" %>
+
+<h1 class="text-white text-center"><%=@user.name.capitalize!%>'s profile </h1>
+<div class="text-center">
+    <%= user_edit(@user)%>
+</div>
+<%=user_articles(@user)%>
+<div class="container d-flex align-items-center flex-column">
+    <% @articles.each do |article| %>
+    <article class=" bg-white w-75 my-4 mx- p-4 shadow">
+        <div class="content">
+            <div class="title text-center mt-3">
+                <%= link_to article.title.capitalize!, article_path(article.id), class: "text-success h3" %>
+            </div>
+            <div class="body p-5">
+                <p class="mb-0 mt-2 h5 font-weight-normal">
+                    <%= article.body%>
+                </p>
+            </div>
+            <div class="action-buttons mt-2 text-center">
+                <%= link_to  "View", article_path(article.id), class: "btn btn-outline-success"  %>
+            </div>
+
+        </div>
+    </article>
+    <% end %>
+</div>
+<div class="text-center">
+    <%= user_new_articles(@articles)%>
+</div>
+<div class="flickr_pagination mb-4 mt-2">
+    <%= will_paginate @articles, container: false %>
+</div>

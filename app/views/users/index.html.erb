@@ -1,0 +1,24 @@
+<%= render  "shared/notice" %>
+
+<h1 class="text-white text-center">All users</h1>
+<div class="users-board d-flex flex-column align-items-center container w-75">
+    <% @users.each do |user| %>
+    <div class=" user-card bg-white w-75 my-4 shadow mx-3 p-5">
+        <div class="user-name h6">
+            Name: <%=user.name%>
+        </div>
+        <div class="user-email h6">
+            Email: <%=user.email.downcase%>
+        </div>
+        <div class="user-id h6">
+            ID: <%=user.id%>
+        </div>
+        <div class="action-buttons mt-2 text-center">
+            <%= link_to  "View user", user_path(user.id), class: "btn btn-outline-success"  %>
+        </div>
+    </div>
+    <% end %>
+</div>
+<div class="flickr_pagination mb-4 mt-2">
+    <%= will_paginate @users, container: false %>
+</div>

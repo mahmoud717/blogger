@@ -1,0 +1,19 @@
+<%= form_for(@article) do |f| %>
+<%= render  "shared/errors", obj: @article %>
+<div class="container form-container  w-50 bg-white p-5 ">
+    <div class="form-group">
+        <%= f.label :title  %>
+        <%= f.text_field :title,class: "form-control",:aria=>{:describedby=> "titleHelp"}, :placeholder=> "Enter title" %>
+        <small id="titleHelp" class="form-text text-muted">Please write a discriptive title.</small>
+    </div>
+    <div class="form-group">
+        <%= f.label :body %>
+        <%= f.text_area :body, class: "form-control",:aria=>{:describedby=> "bodyHelp"}, :placeholder=> "Start writing" %>
+        <small id="bodyHelp" class="form-text text-muted">Maximum is 400 letters.</small>
+
+    </div>
+    <div class="text-center">
+        <%= f.submit "Submit" , class: "btn btn-lg btn-info" %>
+    </div>
+    <% end %>
+</div>

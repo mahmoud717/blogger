@@ -1,0 +1,26 @@
+<%= render  "shared/notice" %>
+<div class="container d-flex align-items-center flex-column">
+
+    <article class=" bg-white w-75 my-4 mx- p-5">
+        <div class="author h6 font-italic">
+            By <%=@article.user.name%>
+            <hr>
+        </div>
+        <div class="content">
+            <div class="title text-center">
+                <%= link_to @article.title.capitalize!, article_path(@article), class: "text-success h3" %>
+            </div>
+            <div class="body p-5">
+                <p class="mb-0 mt-2 h5 font-weight-normal">
+                    <%= @article.body%>
+                </p>
+            </div>
+            <div class="action-buttons mt-2 text-center">
+                <%= article_edit(@article)  %>
+                <%= link_to 'Back', articles_path, class: "btn btn-outline-dark" %>
+
+            </div>
+
+        </div>
+    </article>
+</div>
