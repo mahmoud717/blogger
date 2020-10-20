@@ -4,7 +4,7 @@ module ApplicationHelper
     end
     def is_admin
         if is_logged_in?
-        session["current_user"]["is_admin"] == true ? true : false  
+        session["current_user"]["is_admin"] == "true" ? true : false  
         end
     end
     def is_user(user_id)
