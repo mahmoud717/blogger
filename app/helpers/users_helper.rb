@@ -19,4 +19,10 @@ module UsersHelper
             link_to "Create a New Article", new_article_path, class: "new_article btn btn-success text-center" if is_logged_in? && is_user(@user.id) 
         end
     end
+    def gravatar_for(user)
+        email_address = user.email.downcase
+        hash = Digest::MD5.hexdigest(email_address)
+        image_src = "https://www.gravatar.com/avatar/#{hash}?s=300"
+        image_tag image_src , alt: user.name, class: "text-center rounded"
+    end
 end

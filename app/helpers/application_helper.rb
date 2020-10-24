@@ -12,4 +12,12 @@ module ApplicationHelper
         session["current_user"]["id"] == user_id ? true : false
         end
     end
+    def dropdown
+        if is_logged_in?
+            link_to "signout", logout_path, class: "dropdown-item"
+        else
+            link_to("signup", signup_path, class: "dropdown-item") + 
+            link_to("login", login_path, class: "dropdown-item")
+        end
+    end
 end

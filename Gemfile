@@ -27,6 +27,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'bootstrap', '~> 4.5.2'
 gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.0'
+gem 'gravatar_image_tag', '~> 1.2'
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 

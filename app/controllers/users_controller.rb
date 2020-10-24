@@ -12,6 +12,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @articles = @user.articles.paginate(page: params[:page], per_page: 5)
+
   end
 
   # GET /users/new
@@ -27,17 +28,15 @@ class UsersController < ApplicationController
   # POST /users.json
   def create
     @user = User.new(user_params)
-
-    respond_to do |format|
       if @user.save
-        format.html { redirect_to login_path, notice: "User was successfully created, welcome #{session[":current_user"]["name"]}" }
-        format.json { render :show, status: :created, location: @user }
+        redirect_to login_path, notice: "User was successfully created, please login to continue" 
+        render :show, status: :created, location: @user 
       else
-        format.html { render "new" }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        flash.now[:notice] = @user.errors.full_messages
+        render "new" 
+        
       end
     end
-  end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
